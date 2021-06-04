@@ -1,0 +1,12 @@
+<!-- Loop over each user object -->
+{{#each allPosts as |post| }}
+<div class="row align-center mb-5">
+  <div class="col-md-6">
+    <!-- Render user-specific data with Handlebars.js expressions -->
+    <h2>{{post.title}} by {{post.user}}</h2>
+  </div>
+  <div class="col-md-6">
+    <p>{{post.body}}</p>
+  </div>
+</div>
+{{/each}}
