@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {User, Post} = require('../../models');
+const {User, Post, Comment} = require('../../models');
 
 router.get('/', async(req, res) => {
 
@@ -8,7 +8,10 @@ router.get('/', async(req, res) => {
             include: [
                 {
                     model:User,
-                    attributes: ['name', 'email', 'id']
+                    attributes: ['name', 'email', 'id',]
+                }, 
+                {
+                    model: Comment
                 }]
         })
         res.status(200).json(allPosts);
