@@ -26,6 +26,32 @@ router.get('/' , async (req, res) => {
 });
 
 
+router.get('/post/:id', async(req,res) => {
+  try {
+    const post = await Post.findByPk(req.params.id, {
+      include: [{model: Comment}, {model:User, attributes: ['name', 'email']}],
+      raw:true
+    })
+    const comments = await Comment.findAll( {
+      where: {
+        post_id: req.params.id
+      },
+      include:[{model:User, attributes:['name', 'email']}],
+      raw:true
+    })
+    console.log(comments);
+    res.render('post', {
+      post,
+      comments,
+      logged_in: req.session.logged_in
+    })
+  }
+  catch (err) {
+    res.status(500).json(err);
+  }
+})
+
+
 // Prevent non logged in users from viewing the homepage
 router.get('/users', async (req, res) => {
   try {
@@ -51,12 +77,11 @@ router.get('/login', (req, res) => {
     res.redirect('/');
     return;
   }
-
   res.render('login');
 });
 
 
-router.get('/dashboard', async (req,res) => {
+router.get('/dashboard', withAuth, async (req,res) => {
   // only render posts if user is logged_in
   const userPosts = await Post.findAll({
     where: {
@@ -65,8 +90,6 @@ router.get('/dashboard', async (req,res) => {
     include: [{model:Comment}],
     raw:true
   })
-  console.log(req.session);
-  console.log(userPosts);
   res.render('dashboard', {
     userPosts,
     user_name: req.session.user_name,

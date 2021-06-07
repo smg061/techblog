@@ -1,0 +1,40 @@
+<div class="row align-center mb-5">
+  <div class="col-md-6">
+    <!-- Render user-specific data with Handlebars.js expressions -->
+    <h3>{{post.title}} <span style="font-size: 1rem;"></span></h2>
+  </div>
+  <div class="row-md-6">
+    <p>{{post.body}}</p>
+  </div>
+</div>
+
+{{#each comments as |comment|}}
+
+<div class="row align-center mb-5">
+  <div class="col-md-6">
+    <!-- Render user-specific data with Handlebars.js expressions -->
+    <h3>{{comment.title}} <span style="font-size: 1rem;"> {{getObjectProperty comment 'user.name'}} said: </span></h2>
+  </div>
+  <div class="row-md-6">
+    <p>{{comment.body}}</p>
+  </div>
+</div>
+{{/each}}
+
+{{#if logged_in}}
+<h2>Add a comment</h2>
+<form>
+  <!-- Message input -->
+  <div class="form-outline mb-4">
+    <textarea class="form-control" id="commentBody" rows="4"></textarea>
+  </div>
+<button type="button" class="btn btn-primary" id="addComment">+ Add a comment</button>
+</form>
+
+{{else}}
+<p><a href="/login">You must be logged in to comment</a></p>
+
+{{/if}}
+
+
+<script src="/js/addComment.js"></script>

@@ -17,5 +17,4 @@ router.delete('/', async (req, res) => {
     res.send("delete route works")
 })
 
-
 module.exports = router;
