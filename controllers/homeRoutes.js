@@ -69,7 +69,8 @@ router.get('/dashboard', async (req,res) => {
   console.log(userPosts);
   res.render('dashboard', {
     userPosts,
-    user_name: req.session.user_name
+    user_name: req.session.user_name,
+    user_id: req.session.user_id
   })
 }
 )
