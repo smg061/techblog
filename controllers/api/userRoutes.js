@@ -1,6 +1,27 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+// CREATE new user
+router.post('/', async (req, res) => {
+  try {
+    const dbUserData = await User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    req.session.save(() => {
+      req.session.logged_in = true;
+      req.session.user_name = req.body.username
+      res.status(200).json(dbUserData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// handle user logins
 router.post('/login', async (req, res) => {
   try {
     // Find the user who matches the posted e-mail address
@@ -22,12 +43,12 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
-
+    console.log(req.session);
     // Create session variables based on the logged in user
     req.session.save(() => {
       req.session.user_id = userData.id;
+      req.session.user_name = userData.name;
       req.session.logged_in = true;
-      
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 
@@ -36,6 +57,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// handle logouts
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     // Remove the session variables

@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { User, Post } = require('../models');
+const { User, Post, Comment } = require('../models');
+const withAuth = require('../utils/auth')
 
 // render all posts
 router.get('/' , async (req, res) => {
@@ -26,7 +27,7 @@ router.get('/' , async (req, res) => {
 
 
 // Prevent non logged in users from viewing the homepage
-router.get('/users' , async (req, res) => {
+router.get('/users', async (req, res) => {
   try {
     const userData = await User.findAll({
       attributes: { exclude: ['password'] },
@@ -53,5 +54,24 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+
+router.get('/dashboard', async (req,res) => {
+  // only render posts if user is logged_in
+  const userPosts = await Post.findAll({
+    where: {
+      user_id:req.session.user_id
+    },
+    include: [{model:Comment}],
+    raw:true
+  })
+  console.log(req.session);
+  console.log(userPosts);
+  res.render('dashboard', {
+    userPosts,
+    user_name: req.session.user_name
+  })
+}
+)
 
 module.exports = router;

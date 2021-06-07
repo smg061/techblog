@@ -1,9 +1,10 @@
-<!-- Loop over each user object -->
+<!-- Loop over each post -->
+<h2>All posts </h1>
 {{#each allPosts as |post| }}
 <div class="row align-center mb-5">
   <div class="col-md-6">
     <!-- Render user-specific data with Handlebars.js expressions -->
-    <h2>{{post.title}} by {{getObjectProperty post 'user.name'}}</h2>
+    <h3>{{post.title}} <span style="font-size: 1rem;">by {{getObjectProperty post 'user.name'}}</span></h2>
   </div>
   <div class="col-md-6">
     <p>{{post.body}}</p>

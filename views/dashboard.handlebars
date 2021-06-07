@@ -1,0 +1,33 @@
+<h1>My Dasboard</h1>
+
+<h3>Hello {{user_name}} </h3>
+
+<h3>Your Posts</h3>
+
+{{#each userPosts as |post|}}
+<div class="row align-center mb-5">
+  <div class="col-md-6">
+    <!-- Render user-specific data with Handlebars.js expressions -->
+    <h3>{{post.title}} <span style="font-size: 1rem;"></span></h2>
+  </div>
+  <div class="col-md-6">
+    <p>{{post.body}}</p>
+  </div>
+</div>
+{{/each}}
+
+<form>
+
+  <!-- title input -->
+  <div class="form-outline mb-4">
+    <input type="text" id="form4Example1" class="form-control" />
+    <label class="form-label" for="form4Example1">Title</label>
+  </div>
+
+  <!-- Message input -->
+  <div class="form-outline mb-4">
+    <textarea class="form-control" id="form4Example3" rows="4"></textarea>
+    <label class="form-label" for="form4Example3">Content</label>
+  </div>
+<button type="button" class="btn btn-primary" id="addPost">+ Add a Post</button>
+</form>
