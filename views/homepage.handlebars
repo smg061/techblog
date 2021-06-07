@@ -1,18 +1,18 @@
 <!-- Loop over each post -->
-<div class="page-header">
-<h2>All posts</h2>
-</div>
-<div>
-{{#each allPosts as |post| }}
-<div class="row align-center mb-5">
-  <div class="col-md-6">
-    <!-- Render user-specific data with Handlebars.js expressions -->
-    <h4><a href="/post/{{post.post_id}}">{{post.title}}</a> <span style="font-size: 1rem;">by {{getObjectProperty post 'user.name'}}</span></h4>
+<h2 style="margin-left: 1rem;">All posts</h2>
+
+{{#each allPosts as |post|}}
+
+  <div class="card" style="height: 10rem; margin:1.5rem;">
+    <div class="card-header">
+      <h3 class="card-title"><a href="/post/{{post.post_id}}">{{post.title}}</a>
+        <span class="card-subtitle" style="font-size: 1rem;">by
+          {{getObjectProperty post "user.name"}}</span></h3>
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{post.body}}</p>
+    </div>
+
   </div>
-  <div class="row-md-6">
-    <p>{{post.body}}</p>
-    <a href="/post/{{post.post_id}}">See comments</a>
-  </div>
-</div>
+
 {{/each}}
-</div>

@@ -1,7 +1,12 @@
 <div class="row align-center mb-5">
   <div class="col-md-6">
     <!-- Render user-specific data with Handlebars.js expressions -->
-    <h3>{{post.title}} <span style="font-size: 1rem;"></span></h2>
+    <h3>{{post.title}} <span style="font-size: 1rem;"></span>
+    {{#if same_user}}
+    <a href="/post/{{post.post_id}}/edit" class="btn btn-primary btn-sm" style="margin-left: 1.5rem;">Edit post</a>
+    <button type="button" class="btn btn-danger btn-sm" id="deletePost" style="">Delete post</button>
+    {{/if}}
+    </h2>
   </div>
   <div class="row-md-6">
     <p>{{post.body}}</p>
@@ -9,7 +14,6 @@
 </div>
 
 {{#each comments as |comment|}}
-
 <div class="row align-center mb-5">
   <div class="col-md-6">
     <!-- Render user-specific data with Handlebars.js expressions -->
@@ -33,7 +37,6 @@
 
 {{else}}
 <p><a href="/login">You must be logged in to comment</a></p>
-
 {{/if}}
 
 

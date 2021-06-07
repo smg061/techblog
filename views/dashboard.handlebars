@@ -1,20 +1,26 @@
-<h1>My Dasboard</h1>
-<h3>Hello {{user_name}} </h3>
 
-<h3>Your Posts</h3>
+<section class="banner" style="margin: 0%; padding:0%">
+ <section class="hero-banner bg-light py-5">
+    <div class="container">
+        <div class="row row align-items-center">
+              <h1>My Dashboard</h1>
+              <h4>Hello {{user_name}} </h4>
+        </div>
+    </div>
+  </section>
 
+<h4>Your Posts</h4>
 {{#each userPosts as |post|}}
-<div class="row align-center mb-5">
-  <div class="col-md-6">
-    <!-- Render user-specific data with Handlebars.js expressions -->
-    <h3>{{post.title}} <span style="font-size: 1rem;"></span></h2>
+  <div class="card" style="height: 10rem; margin-left:0.1rem;">
+    <div class="card-header">
+      <h3 class="card-title"><a href="/post/{{post.post_id}}">{{post.title}}</a>
+        </h3>
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{post.body}}</p>
+    </div>
   </div>
-  <div class="row-md-6">
-    <p>{{post.body}}</p>
-  </div>
-</div>
 {{/each}}
-
 <form>
   <!-- title input -->
   <div class="form-outline mb-4">
