@@ -18,8 +18,8 @@
     </div>
         {{#if same_user}}
         <div class="card-text" style="margin:0.2rem">
-        <button type="button" class="btn btn-primary btn-sm" id="editPost">Edit post</button>
-        <button type="button" class="btn btn-danger btn-sm" id="deletPost">Delete post</button>
+        <a  class="btn btn-primary btn-sm" href="/post/{{post.post_id}}/edit">Edit post</a>
+        <button type="button" class="btn btn-danger btn-sm" id="deletePost">Delete post</button>
          </div>
         {{/if}}
   </div>
@@ -59,7 +59,6 @@
 {{else}}
 <p><a href="/login">You must be logged in to comment</a></p>
 {{/if}}
-
 
 <script src="/js/addComment.js"></script>
 <script src="/js/deletePost.js"></script>
