@@ -66,7 +66,7 @@ router.delete("/:id", async (req, res) => {
     const deletedPost = await Post.destroy({
       where: { post_id: req.params.id },
     });
-    res.status(200), json(deletedPost);
+    res.status(200).json(deletedPost);
   } catch (err) {
     res.status(500).json(err);
   }
