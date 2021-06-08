@@ -9,6 +9,7 @@ const postFormHandler = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
+      console.log(response);
       document.location.replace("/");
     } else {
       alert(response.statusText);
@@ -16,4 +17,6 @@ const postFormHandler = async (event) => {
   }
 };
 
-document.querySelector("#addPost").addEventListener("click", postFormHandler);
+document
+.querySelector("#addPost")
+.addEventListener("click", postFormHandler);

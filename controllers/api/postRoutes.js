@@ -47,4 +47,29 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.put("/:id/edit", async (req, res) => {
+    if (!req.body){
+        console.log("no body!")
+    }
+  try {
+    const updatedPost = await Post.update(req.body, {
+      where: { post_id: req.params.id },
+    });
+    res.status(200).json(updatedPost);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const deletedPost = await Post.destroy({
+      where: { post_id: req.params.id },
+    });
+    res.status(200), json(deletedPost);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
