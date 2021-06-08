@@ -1,18 +1,59 @@
 <!-- Loop over each post -->
 <h2 style="margin-left: 1rem;">All posts</h2>
 
-{{#each allPosts as |post|}}
+{{!-- {{#each allPosts as |post|}}
 
   <div class="card" style="height: 10rem; margin:1.5rem;">
     <div class="card-header">
       <h3 class="card-title"><a href="/post/{{post.post_id}}">{{post.title}}</a>
         <span class="card-subtitle" style="font-size: 1rem;">by
-          {{getObjectProperty post "user.name"}}</span></h3>
+          {{getObjectProperty post "user.name"}}
+          - Posted:
+          {{format_date post.createdAt}}
+          Last Updated:
+          {{format_date post.updatedAt}}</span></h3>
     </div>
     <div class="card-body">
       <p class="card-text">{{post.body}}</p>
     </div>
 
   </div>
+
+{{/each}} --}}
+
+{{#each allPosts as |post|}}
+
+  <!-- Post card starts -->
+  <section class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 mx-auto">
+          <!-- CUSTOM BLOCKQUOTE -->
+          <blockquote
+            class="blockquote blockquote-custom bg-white p-5 shadow rounded"
+          >
+            <h2 class="card-title">{{post.title}}
+              <span class="card-subtitle" style="font-size: 1rem;">by
+                {{getObjectProperty post "user.name"}}</span></h2>
+            <div class="blockquote-custom-icon bg-info shadow-sm"><i
+                class="fa fa-quote-left text-white" 
+              ></i> {{getFirstLetterFromName post "user.name"}} </div>
+            <p class="mb-0 mt-2 font-italic">"{{post.body}}"</p>
+            <footer class="blockquote-footer pt-4 mt-4 border-top">
+              Posted:
+              {{format_date post.createdAt}}
+              Last Updated:
+              {{format_date post.updatedAt}}
+              <div>
+                <a href="/post/{{post.post_id}}">See comments</a>
+              </div>
+            </footer>
+          </blockquote><!-- END -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- post card ends -->
 
 {{/each}}

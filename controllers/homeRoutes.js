@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
 
 router.get("/post/:id", async (req, res) => {
   try {
-      const post = await Post.findByPk(req.params.id, {
+    const post = await Post.findByPk(req.params.id, {
       include: [
         { model: Comment },
         { model: User, attributes: ["name", "email", "id"] },
@@ -41,14 +41,14 @@ router.get("/post/:id", async (req, res) => {
       include: [{ model: User, attributes: ["name", "email"] }],
       raw: true,
     });
-    console.log(post)
+    console.log(post);
     console.log(comments);
     res.render("post", {
       post,
       comments,
       logged_in: req.session.logged_in,
       // this lets us know if the post the user is viewing is by the same author that's logged in
-      same_user : post['user.id'] == req.session.user_id
+      same_user: post["user.id"] == req.session.user_id,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -99,9 +99,8 @@ router.get("/dashboard", withAuth, async (req, res) => {
   });
 });
 
-router.get('/post/:id/edit', async (req, res) => {
-  res.render('editPost');
-})
-
+router.get("/post/:id/edit", async (req, res) => {
+  res.render("editPost");
+});
 
 module.exports = router;

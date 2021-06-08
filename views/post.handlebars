@@ -1,19 +1,27 @@
-<div class="row align-center mb-5">
-  <div class="col-md-6">
-    <!-- Render user-specific data with Handlebars.js expressions -->
-    <h3>{{post.title}} <span style="font-size: 1rem;"></span>
-    {{#if same_user}}
-    <a href="/post/{{post.post_id}}/edit" class="btn btn-primary btn-sm" style="margin-left: 1.5rem;">Edit post</a>
-    <button type="button" class="btn btn-danger btn-sm" id="deletePost" style="">Delete post</button>
-    {{/if}}
-    </h2>
+    
+
+  <div class="card" style="height: 10rem;">
+    <div class="card-header">
+      <h3 class="card-title">{{post.title}}         
+        <span class="card-subtitle" style="font-size: 1rem;">
+        by {{getObjectProperty post 'user.name'}}
+        - Posted:
+        {{format_date post.createdAt}}
+        Last Updated:
+        {{format_date post.updatedAt}}
+        </span>
+        </h3>
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{post.body}}</p>
+    </div>
+    <div class="card-body">
+        
+    </div>
   </div>
-  <div class="row-md-6">
-    <p>{{post.body}}</p>
-  </div>
-</div>
 
 {{#each comments as |comment|}}
+<div class="card">
 <div class="row align-center mb-5">
   <div class="col-md-6">
     <!-- Render user-specific data with Handlebars.js expressions -->
@@ -22,11 +30,20 @@
   <div class="row-md-6">
     <p>{{comment.body}}</p>
   </div>
+      <div class="card-text">
+        <span class="card-subtitle" style="font-size: 1rem;">
+        - Posted:
+        {{format_date comment.createdAt}} at
+        {{format_time comment.updatedAt}}
+        </span>
+    </div>
 </div>
+</div>  
 {{/each}}
 
 {{#if logged_in}}
 <h2>Add a comment</h2>
+<div class="form-group col-sm-8">
 <form>
   <!-- Message input -->
   <div class="form-outline mb-4">
@@ -34,7 +51,7 @@
   </div>
 <button type="button" class="btn btn-primary" id="addComment">+ Add a comment</button>
 </form>
-
+</div>
 {{else}}
 <p><a href="/login">You must be logged in to comment</a></p>
 {{/if}}
