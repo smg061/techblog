@@ -22,10 +22,13 @@ Otherwise, the app is deployed live in heroku, and can be found [here](https://t
 ## Usage <a name="usage"></a>
 
 Users must create an account if they wish to make posts or comments: 
-![img](https://github.com/smg061/e-commerce-back-side/blob/master/img/2021-06-01%2015_17_02-2021-06-01_14-51-46.mp4%20-%20VLC%20media%20player.jpg)
-![img](https://github.com/smg061/e-commerce-back-side/blob/master/img/2021-06-01%2015_19_39-2021-06-01_14-51-46.mp4%20-%20VLC%20media%20player.jpg)
-![img](https://github.com/smg061/e-commerce-back-side/blob/master/img/2021-06-01%2015_20_10-2021-06-01_14-51-46.mp4%20-%20VLC%20media%20player.jpg)
-
+![image](https://user-images.githubusercontent.com/47426171/121284203-0fc8b100-c8a2-11eb-88a6-f66a1b266a1c.png)
+Users can use the dashboard to see their posts
+![image](https://user-images.githubusercontent.com/47426171/121284417-6cc46700-c8a2-11eb-8c4e-d1ce8b8c9f16.png)
+Users can edit or delete their posts and post commments
+![image](https://user-images.githubusercontent.com/47426171/121284367-5cac8780-c8a2-11eb-8a29-e567e26dadec.png)
+The homepage shows all posts by all users
+![image](https://user-images.githubusercontent.com/47426171/121284336-4dc5d500-c8a2-11eb-91f5-6e42d229730e.png)
 A demonstration of the app can be found here: https://www.youtube.com/watch?v=kNJMr51GaBo
 
 
