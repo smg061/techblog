@@ -29,7 +29,7 @@ Users can edit or delete their posts and post commments
 ![image](https://user-images.githubusercontent.com/47426171/121284367-5cac8780-c8a2-11eb-8a29-e567e26dadec.png)
 The homepage shows all posts by all users
 ![image](https://user-images.githubusercontent.com/47426171/121284336-4dc5d500-c8a2-11eb-91f5-6e42d229730e.png)
-A demonstration of the app can be found here: https://www.youtube.com/watch?v=kNJMr51GaBo
+
 
 
 ## Questions <a name="questions"></a>
